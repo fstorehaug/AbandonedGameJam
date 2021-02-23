@@ -8,14 +8,11 @@ public class StormScript : MonoBehaviour, INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     private int baseTimeToStorm = 1000;
-
+    private int timeToStorm { get { return CalculateTotalTime(); } }
+    private int timeSpent;
+ 
     [Binding]
-    public int TimeSpent { get; set; }
-    [Binding]
-    public int TotalTime { get
-        {
-            return CalculateTotalTime();
-        } }
+    public int TimeLeft { get { return timeToStorm - timeSpent; } }
 
     private void Start()
     {
@@ -34,14 +31,14 @@ public class StormScript : MonoBehaviour, INotifyPropertyChanged
 
     public void onTick() 
     {
-        if (TimeSpent >= TotalTime)
+        if (timeSpent >= timeToStorm)
         {
             GameManager.AbandondIsland();
-            TimeSpent = 0;
+            timeSpent = 0;
         }
 
-        TimeSpent++;
-        OnPropertyChanged(nameof(TimeSpent));
+        timeSpent++;
+        OnPropertyChanged(nameof(timeSpent));
     }
 
     private void OnPropertyChanged(string propertyName)
