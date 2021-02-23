@@ -1849,8 +1849,8 @@ MonoBehaviour:
   screenEdgeScrollBorderPx: 30
   cameraScrollSpeed: 8
   cameraBaseHeight: 3
-  cameraMinHeight: 2
-  cameraMaxHeight: 3
+  cameraMinHeight: 3
+  cameraMaxHeight: 4
   cameraZoomSpeed: 1
 --- !u!1 &989657229
 GameObject:
