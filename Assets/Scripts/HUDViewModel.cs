@@ -24,7 +24,7 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
             //endGame;
         }
 
-        ResourceManager.instance.ResetResources();
+        ResourceManager.instance.CarryOverReasourses();
 		TileMapGenerator.instance.DeleteAllTiles();
 		BuildingManager.DeleteAllBuildings();
 

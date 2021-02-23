@@ -40,7 +40,14 @@ public class ResourceManager
 		int boats = CurrentResources["boats"];
 		int people = CurrentResources["people"];
 		int food = CurrentResources["food"];
-    }
+		int wood = CurrentResources["wood"];
+
+		ResetResources();
+
+		CurrentResources["people"] = (int)Mathf.Clamp(people, 0f, boats);
+		CurrentResources["food"] = (int)Mathf.Clamp(people, 0f, boats*5);
+		CurrentResources["wood"] = (int)Mathf.Clamp(people, 0f, boats*2);
+	}
 
 	public void ResetResources()
 	{
