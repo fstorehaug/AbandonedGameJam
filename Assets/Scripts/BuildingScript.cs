@@ -57,7 +57,16 @@ public class BuildingScript : MonoBehaviour
 
             productionTime = 0;
             isProducing = false;
-            int extractedvalue = tile.extractResource(productionresname, productionValue);
+            int extractedvalue = 0;
+            try
+            {
+               extractedvalue = tile.extractResource(productionresname, productionValue);
+            }
+            catch
+            {
+                extractedvalue = 0;
+                Debug.Log("productioresoursename: " + productionresname);
+            }
             if(extractedvalue < productionValue)
             {
                 TimeManager.onTick -= ProduceResources;

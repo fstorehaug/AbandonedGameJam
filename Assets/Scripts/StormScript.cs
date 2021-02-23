@@ -17,16 +17,22 @@ public class StormScript : MonoBehaviour, INotifyPropertyChanged
     private void Start()
     {
         TimeManager.onTick += onTick;
+        GameManager.onAbandond += resetTimer;
     }
 
     private void OnDestroy()
     {
         TimeManager.onTick -= onTick;
+        GameManager.onAbandond -= resetTimer;
     }
 
     private int CalculateTotalTime() 
     {
-        return (int)baseTimeToStorm * (1 /( GameManager.AbandondIslands + 1));
+        return (int)((float)baseTimeToStorm * (1f /( (float)GameManager.AbandondIslands + 1f)));
+    }
+
+    public void resetTimer() {
+        timeSpent = 0;
     }
 
     public void onTick() 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
 
@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public static SettingsScriptableObject staticSettings;
     public static int AbandondIslands;
+
+    public static UnityAction onAbandond;
 
     public static void GameOver(int score)
     {
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.player.reasourceManager.CurrentResources["boats"] == 0)
         {
             GameManager.GameOver(ResourceManager.instance.RunningPoints);
+            return;
         }
         
         int pointsEarnedOnThisIsland = ResourceManager.instance.DoAbandonmentPointCalculation(); //TODO: display points earned on this island during transition
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (pointsEarnedOnThisIsland == 0)
         {
             GameManager.GameOver(ResourceManager.instance.RunningPoints);
+            return;
         }
 
         ResourceManager.instance.CarryOverReasourses();
@@ -46,11 +50,11 @@ public class GameManager : MonoBehaviour
         BuildingManager.DeleteAllBuildings();
         GameManager.AbandondIslands++;
 
+        onAbandond?.Invoke();
         //TODO: do some transition stuff here
 
         //create the next island!
         TileMapGenerator.instance.GenerateTileMap(Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10), Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10));
-
     }
 
     private void addStartingResources(Player player)
