@@ -24,7 +24,8 @@ public class TileViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return tile.getAvailableResources("wood");
+            
+            return tile == null? 0 : tile.getAvailableResources("wood");
         }
     }
 
@@ -33,7 +34,7 @@ public class TileViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return tile.getAvailableResources("food");
+            return tile == null ? 0 : tile.getAvailableResources("food");
         }
     }
 
@@ -42,16 +43,16 @@ public class TileViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return tile.getAvailableResources("stone");
+            return tile == null ? 0 : tile.getAvailableResources("stone");
         }
     }
 
     [Binding]
-    public int resourceCountIron
+    public int  resourceCountIron
     {
         get
         {
-            return tile.getAvailableResources("iron");
+            return tile == null ? 0 : tile.getAvailableResources("iron");
         }
     }
 
