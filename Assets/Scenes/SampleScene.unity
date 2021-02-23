@@ -884,7 +884,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 100, y: 30}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1713,12 +1713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9de219d63876504a8a0102bed3e4dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenEdgeScrollBorderPx: 64
-  cameraScrollSpeed: 25
-  cameraBaseHeight: 12
-  cameraMinHeight: 10
-  cameraMaxHeight: 20
-  cameraZoomSpeed: 1
 --- !u!1 &989657229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,12 +2389,12 @@ GameObject:
   - component: {fileID: 1516798517}
   - component: {fileID: 1516798520}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Building Test Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1516798516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2721,6 +2715,8 @@ GameObject:
   - component: {fileID: 1531693533}
   - component: {fileID: 1531693532}
   - component: {fileID: 1531693531}
+  - component: {fileID: 1531693536}
+  - component: {fileID: 1531693535}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2841,6 +2837,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531693529}
   m_CullTransparentMesh: 0
+--- !u!114 &1531693535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531693529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3896ce31fce314445b4fe620ef0911ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelMethodName: BuildingListItemViewModel.StartPlacement
+  viewEventName: UnityEngine.UI.Button.onClick
+--- !u!114 &1531693536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531693529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de1901e08c3efb8fa635597b6cafe7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: BuildingListItemViewModel.hasSufficientResources
+  viewPropertyName: UnityEngine.UI.Button.interactable
 --- !u!1 &1628894435
 GameObject:
   m_ObjectHideFlags: 0
