@@ -35,6 +35,13 @@ public class ResourceManager
 		return (int)totalPoints;
 	}
 
+	public void CarryOverReasourses()
+    {
+		int boats = CurrentResources["boats"];
+		int people = CurrentResources["people"];
+		int food = CurrentResources["food"];
+    }
+
 	public void ResetResources()
 	{
 		CurrentResources = new Dictionary<string, int>();

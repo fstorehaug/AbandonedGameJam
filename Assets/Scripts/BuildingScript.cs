@@ -36,12 +36,11 @@ public class BuildingScript : MonoBehaviour
         this.requiredWorkers = data.workerCost;
 
         this.tile = tile;
+        TimeManager.onTick += ProduceResources;
     }
 
     public void ProduceResources() 
     {
-        
-
         if (productionTime <= productionDelay)
         {
             productionTime = 0;
@@ -79,6 +78,6 @@ public class BuildingScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+        TimeManager.onTick -= ProduceResources;
     }
 }

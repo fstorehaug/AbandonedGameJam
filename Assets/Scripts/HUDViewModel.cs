@@ -18,7 +18,13 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
 	public void AbandonIsland()
 	{
 		int pointsEarnedOnThisIsland = ResourceManager.instance.DoAbandonmentPointCalculation(); //TODO: display points earned on this island during transition
-		ResourceManager.instance.ResetResources();
+		
+        if (pointsEarnedOnThisIsland == 0)
+        {
+            //endGame;
+        }
+
+        ResourceManager.instance.ResetResources();
 		TileMapGenerator.instance.DeleteAllTiles();
 		BuildingManager.DeleteAllBuildings();
 
