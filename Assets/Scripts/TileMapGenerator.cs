@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using System;
 
 public class TileMapGenerator : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class TileMapGenerator : MonoBehaviour
     private int dimY;
 
     private MapTile[,] mapTiles;
+
+    private Dictionary<string, int> resourcesToAssign = new Dictionary<string, int>() {{"wood", 1000}, {"food", 1000}, {"stone", 1000}, {"iron", 1000}};
 
     void Awake()
     {
@@ -39,6 +43,8 @@ public class TileMapGenerator : MonoBehaviour
 
         mapTiles = new MapTile[dimY, dimX];
 
+        List<MapTile> shuffledTileList = new List<MapTile>();
+
         for(int y = 0; y < dimY; y++)
         {
             for(int x = 0; x < dimX; x++)
@@ -55,6 +61,22 @@ public class TileMapGenerator : MonoBehaviour
                 tile.transform.localRotation = Quaternion.identity;
                 //tile.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color((x / 10.0f) % 1.0f, (y / 10.0f) % 1.0f , x*y));
                 mapTiles[y, x] = tile;
+                shuffledTileList.Add(tile);
+            }
+        }
+
+        foreach(var resourcePair in resourcesToAssign)
+        {
+            // Shuffle tile list
+            var rand = new System.Random();
+            shuffledTileList = shuffledTileList.OrderBy (x => rand.Next()).ToList();
+
+            int tilesWithResources = shuffledTileList.Count / 2;
+            int resourcesPerTile = resourcePair.Value / tilesWithResources;
+
+            for(int iTile = 0; iTile < tilesWithResources; iTile++)
+            {
+                shuffledTileList[iTile].addAvailableResource(resourcePair.Key, resourcesPerTile);
             }
         }
     }
