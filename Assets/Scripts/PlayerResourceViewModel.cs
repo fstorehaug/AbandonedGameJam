@@ -71,7 +71,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
 
     private void Awake()
     {
-        SetResourceManager(Player.mainPlayer.reasourceManager);
+        SetResourceManager(GameManager.player.reasourceManager);
     }
 
     private void Update()

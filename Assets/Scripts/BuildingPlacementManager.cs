@@ -53,7 +53,7 @@ public class BuildingPlacementManager : MonoBehaviour
             MapTile tile = TileMapGenerator.instance.GetTile(x, y);
             if(tile != null)
             {
-                Player player = Player.mainPlayer; // TODO: FIXME
+                Player player = GameManager.player; // TODO: FIXME
 
                 if(BuildingManager.CanBuild(player, buildingData, tile))
                 {

@@ -10,8 +10,6 @@ public class Player
 
     public readonly ResourceManager reasourceManager;
 
-    public static Player mainPlayer = new Player("player"); // FIXME!!!
-
     public Player(string name)
     {
         reasourceManager = new ResourceManager();

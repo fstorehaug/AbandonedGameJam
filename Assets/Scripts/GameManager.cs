@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    Player player;
+    public static Player player;
     [SerializeField]
     public SettingsScriptableObject settings;
 

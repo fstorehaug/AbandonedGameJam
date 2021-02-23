@@ -30,14 +30,14 @@ public class BuildingListItemViewModel : INotifyPropertyChanged
     {
         get
         {
-            return BuildingManager.canAfford(Player.mainPlayer.reasourceManager, buildingData);
+            return BuildingManager.canAfford(GameManager.player.reasourceManager, buildingData);
         }
     }
 
     [Binding]
     public void StartPlacement()
     {
-        if(BuildingManager.canAfford(Player.mainPlayer.reasourceManager, buildingData))
+        if(BuildingManager.canAfford(GameManager.player.reasourceManager, buildingData))
         {
             BuildingPlacementManager.instance.StartPlacement(buildingData);
         }
