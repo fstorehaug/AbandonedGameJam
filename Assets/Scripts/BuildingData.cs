@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class BuildingData
+[System.Serializable]
+public struct BuildingResourceCost
 {
-    public Dictionary<string, int> cost;
+    public string resource;
+    public int cost;
+}
+
+[System.Serializable]
+public struct BuildingData
+{
+    public List<BuildingResourceCost> cost;
     public GameObject model;
     
     public string consumtionResourseType;
@@ -18,4 +25,3 @@ public class BuildingData
 
     public bool needwater;
 }
-

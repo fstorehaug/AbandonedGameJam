@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class TileMapGenerator : MonoBehaviour
 {
+    public static TileMapGenerator instance;
 
     public MapTile mapTilePrefab;
     public int mapTileSize = 1;
@@ -13,6 +14,11 @@ public class TileMapGenerator : MonoBehaviour
     private int dimY;
 
     private MapTile[,] mapTiles;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

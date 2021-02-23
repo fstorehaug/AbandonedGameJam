@@ -29,9 +29,9 @@ public class BuildingManager : MonoBehaviour
    
     public static bool canAfford(ResourceManager resourceManager, BuildingData building)
     {
-        foreach (string reasourcename in building.cost.Keys)
+        foreach (var resourceCost in building.cost)
         {
-            if (resourceManager.CurrentResources[reasourcename] < building.cost[reasourcename])
+            if (resourceManager.CurrentResources[resourceCost.resource] < resourceCost.cost)
             {
                 return false;
             }
@@ -42,9 +42,9 @@ public class BuildingManager : MonoBehaviour
 
     public static void Build(Player player, BuildingData buidling, MapTile tile)
     {
-        foreach (string resourcename in buidling.cost.Keys)
+        foreach (var resourceCost in buidling.cost)
         {
-            player.reasourceManager.SpendResource(resourcename, buidling.cost[resourcename]);
+            player.reasourceManager.SpendResource(resourceCost.resource, resourceCost.cost);
         }
 
         GameObject buildingmodel = Instantiate(buidling.model);
