@@ -14,17 +14,11 @@ public class TileMapGenerator : MonoBehaviour
 
     private MapTile[,] mapTiles;
 
-    private PlayerControlls playerControlls;
-    private Vector2 mousePosition;
-
     void Start()
     {
-        playerControlls = new PlayerControlls();
+        InteractionManager.instance.onTileSelect += DeleteTileTest;
 
         GenerateTileMap(32, 32);
-        playerControlls.Enable();
-        playerControlls.KeyboardMouse.TileSelect.performed += OnTileSelect;
-        playerControlls.KeyboardMouse.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
     }
 
     void Update()
@@ -63,14 +57,9 @@ public class TileMapGenerator : MonoBehaviour
             return null;
     }
 
-    private void OnTileSelect(InputAction.CallbackContext context)
+    private void DeleteTileTest(int x, int y)
     {
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        float d = (this.transform.position.y - ray.origin.y) / ray.direction.y;
-        Vector3 hitPosWorld = ray.origin + ray.direction * d;
-        Vector3 hitPosLocal = this.transform.InverseTransformPoint(hitPosWorld);
-
-        MapTile tile = GetTile((int)hitPosLocal.x, (int)hitPosLocal.z);
+        MapTile tile = GetTile(x, y);
         if(tile != null)
         {
             GameObject.Destroy(tile.gameObject);
