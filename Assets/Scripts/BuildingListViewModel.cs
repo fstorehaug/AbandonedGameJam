@@ -26,6 +26,8 @@ public class BuildingListViewModel: MonoBehaviour, INotifyPropertyChanged
             BuildingListItemViewModel buildingVM = new BuildingListItemViewModel(building);
             observableList.Add(buildingVM);
         }
+
+        OnPropertyChanged("buildingList");
     }
 
 	private void OnPropertyChanged(string propertyName)
