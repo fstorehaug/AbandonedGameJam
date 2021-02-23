@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   playerName: 
-  playerScore: 
+  playerScore: 0
