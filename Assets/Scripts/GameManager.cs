@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
 
     Player player;
     [SerializeField]
-    public static SettingsScriptableObject settings;
+    public SettingsScriptableObject settings;
 
+    public static SettingsScriptableObject staticSettings;
     public static int AbandondIslands;
 
     public static void GameOver(int score)
     {
-        settings.playerScore = score;
+        staticSettings.playerScore = score;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         player = new Player(settings.name);
         AbandondIslands = 0;
+        staticSettings = settings;
     }
 
     private void addStartingResources(Player player)
