@@ -574,6 +574,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103835744523342463, guid: d13e626d8853d2fddab2293dae2cfc96,
+        type: 3}
+      propertyPath: mapTileSlopedPrefab
+      value: 
+      objectReference: {fileID: 5132037287765689410, guid: af74a16902ccca12c989f868edac744a,
+        type: 3}
     - target: {fileID: 4420561521501588349, guid: d13e626d8853d2fddab2293dae2cfc96,
         type: 3}
       propertyPath: m_Name
