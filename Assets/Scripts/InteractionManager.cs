@@ -13,7 +13,9 @@ public class InteractionManager : MonoBehaviour
     private PlayerControlls playerControlls;
     private Vector2 mousePosition;
 
-    private void Awake()
+	public Vector2 MousePosition { get => mousePosition; }
+
+	private void Awake()
     {
         Debug.Assert(instance == null);
         instance = this;
