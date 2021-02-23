@@ -85,7 +85,7 @@ MonoBehaviour:
     - resource: wood
       cost: 25
     model: {fileID: 1385343169751839987, guid: 92bab7eee8b1e4931980474139e0deb7, type: 3}
-    consumtionResourseType: lumber
+    consumtionResourseType: wood
     productionResourseType: boats
     consumtionValue: 10
     productionValue: 1
