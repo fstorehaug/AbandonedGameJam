@@ -11,7 +11,7 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
     [Binding]
     public void StartPlacingTestModel()
     {
-        Debug.Log("TODO!");
+        BuildingPlacementManager.instance.StartPlacement(BuildingDatabase.instance.buildings[0]);
     }
 
     private void OnPropertyChanged(string propertyName)

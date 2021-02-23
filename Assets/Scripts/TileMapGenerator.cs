@@ -22,7 +22,7 @@ public class TileMapGenerator : MonoBehaviour
 
     void Start()
     {
-        InteractionManager.instance.onTileSelect += DeleteTileTest;
+        //InteractionManager.instance.onTileSelect += DeleteTileTest;
 
         GenerateTileMap(32, 32);
     }

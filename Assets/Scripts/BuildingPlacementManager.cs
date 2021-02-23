@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BuildingPlacementManager
+public class BuildingPlacementManager : MonoBehaviour
 {
     public static BuildingPlacementManager instance;
 
@@ -22,16 +22,27 @@ public class BuildingPlacementManager
         isPlacing = false;
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
+        InteractionManager.instance.onTileHover += OnTileHover;
         InteractionManager.instance.onTileSelect += OnTileSelect;
     }
 
-    private void Update()
+    private void OnTileHover(int x, int y)
     {
         if(isPlacing)
         {
-
+            MapTile tile = TileMapGenerator.instance.GetTile(x, y);
+            if(tile != null)
+            {
+                buildingGhost.transform.parent = tile.transform;
+                buildingGhost.transform.localPosition = new Vector3(0.0f, TileMapGenerator.instance.mapTileSize * 0.5f, 0.0f);
+            }
         }
     }
 
@@ -42,8 +53,13 @@ public class BuildingPlacementManager
             MapTile tile = TileMapGenerator.instance.GetTile(x, y);
             if(tile != null)
             {
-                buildingGhost.transform.parent = tile.transform;
-                buildingGhost.transform.localPosition = new Vector3(0.0f, TileMapGenerator.instance.mapTileSize * 0.5f, 0.0f);
+                Player player = new Player("TEST"); // TODO: FIXME
+
+                if(BuildingManager.CanBuild(player, buildingData, tile))
+                {
+                    BuildingManager.Build(player, buildingData, tile);
+                    EndPlacement();
+                }
             }
         }
     }
