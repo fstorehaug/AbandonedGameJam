@@ -767,7 +767,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buildings.Array.data[2].model
       value: 
-      objectReference: {fileID: 8054089663226282139, guid: ddb0b437865ed0646ba3cf4a3533dbdb,
+      objectReference: {fileID: 2798496844739819926, guid: 53987963378557641bcbec2b290e7f84,
         type: 3}
     - target: {fileID: 582079899225041696, guid: a36d1eaf2cd7e424095833e41f18b1a2,
         type: 3}
