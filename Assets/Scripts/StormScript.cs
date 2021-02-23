@@ -38,7 +38,7 @@ public class StormScript : MonoBehaviour, INotifyPropertyChanged
         }
 
         timeSpent++;
-        OnPropertyChanged(nameof(timeSpent));
+        OnPropertyChanged(nameof(TimeLeft));
     }
 
     private void OnPropertyChanged(string propertyName)
