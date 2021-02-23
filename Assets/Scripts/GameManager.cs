@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         player = new Player(settings.name);
         AbandondIslands = 0;
         staticSettings = settings;
+        addStartingResources(player);
     }
 
     private void addStartingResources(Player player)
