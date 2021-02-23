@@ -43,7 +43,7 @@ public class BuildingScript : MonoBehaviour
     {
         if (productionTime >= productionDelay)
         {
-            if (productionresname == "people")
+            if (productionresname == "people" || productionresname == "boats")
             {
                 productionTime = 0;
                 isProducing = false;
