@@ -53,6 +53,7 @@ public class BuildingManager : MonoBehaviour
 
         buildingScript.setupBuilding(buidling, player, tile);
 		buildings.Add(buildingmodel);
+        tile.isOccupied = true;
 	}
 
 	public static void DeleteAllBuildings()
