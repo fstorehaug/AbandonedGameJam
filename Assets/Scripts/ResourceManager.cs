@@ -10,7 +10,9 @@ public class ResourceManager
         "wood",
         "food",
         "stone",
-        "iron"
+        "iron",
+        "people",
+        "boats"
     };
 
     public ResourceManager()
