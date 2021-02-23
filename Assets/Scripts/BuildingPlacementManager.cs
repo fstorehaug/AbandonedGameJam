@@ -20,6 +20,7 @@ public class BuildingPlacementManager : MonoBehaviour
     public void EndPlacement()
     {
         isPlacing = false;
+        Destroy(buildingGhost);
     }
 
     private void Awake()
