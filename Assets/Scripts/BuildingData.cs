@@ -12,6 +12,7 @@ public struct BuildingResourceCost
 [System.Serializable]
 public struct BuildingData
 {
+    public string buildingName;
     public List<BuildingResourceCost> cost;
     public GameObject model;
     
