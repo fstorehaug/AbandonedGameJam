@@ -8,6 +8,7 @@ public class TileMapGenerator : MonoBehaviour
     public static TileMapGenerator instance;
 
     public MapTile mapTilePrefab;
+    public MapTile mapTileSlopedPrefab;
     public int mapTileSize = 1;
 
     private int dimX;
@@ -42,12 +43,17 @@ public class TileMapGenerator : MonoBehaviour
         {
             for(int x = 0; x < dimX; x++)
             {
-                MapTile tile = GameObject.Instantiate(mapTilePrefab);
+                MapTile tile;
+                if(x == 0 || x == dimX - 1 || y == 0 || y == dimY - 1)
+                    tile = GameObject.Instantiate(mapTileSlopedPrefab);
+                else
+                    tile = GameObject.Instantiate(mapTilePrefab);
+
                 tile.transform.parent = this.transform;
                 tile.transform.localPosition = new Vector3(x * mapTileSize, 0.05f, y * mapTileSize) + new Vector3(mapTileSize/2, -mapTileSize/2, mapTileSize/2);
                 tile.transform.localScale = Vector3.one;
                 tile.transform.localRotation = Quaternion.identity;
-                tile.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color((x / 10.0f) % 1.0f, (y / 10.0f) % 1.0f , x*y));
+                //tile.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color((x / 10.0f) % 1.0f, (y / 10.0f) % 1.0f , x*y));
                 mapTiles[y, x] = tile;
             }
         }
