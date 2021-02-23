@@ -24,6 +24,11 @@ public class MapTile : MonoBehaviour
         }
     }
 
-
-
+    public int getAvailableResources(string resourceName)
+    {
+        if(availableresources.ContainsKey(resourceName))
+            return availableresources[resourceName];
+        else
+            return 0;
+    }
 }
