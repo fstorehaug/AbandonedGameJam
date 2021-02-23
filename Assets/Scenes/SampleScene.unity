@@ -756,6 +756,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3707645767667277987, guid: 198ef2e7bd441a645bfcb28bd0028a5d,
         type: 3}
+    - target: {fileID: 582079899225041696, guid: a36d1eaf2cd7e424095833e41f18b1a2,
+        type: 3}
+      propertyPath: buildings.Array.data[0].model
+      value: 
+      objectReference: {fileID: 8371689903210820257, guid: e7f9ca7c8930731418c7554ba5d33ee1,
+        type: 3}
+    - target: {fileID: 582079899225041696, guid: a36d1eaf2cd7e424095833e41f18b1a2,
+        type: 3}
+      propertyPath: buildings.Array.data[2].model
+      value: 
+      objectReference: {fileID: 8054089663226282139, guid: ddb0b437865ed0646ba3cf4a3533dbdb,
+        type: 3}
+    - target: {fileID: 582079899225041696, guid: a36d1eaf2cd7e424095833e41f18b1a2,
+        type: 3}
+      propertyPath: buildings.Array.data[3].model
+      value: 
+      objectReference: {fileID: 7400546648260236510, guid: aa8e4b79210feac448e5629374b83faa,
+        type: 3}
     - target: {fileID: 582079899225041697, guid: a36d1eaf2cd7e424095833e41f18b1a2,
         type: 3}
       propertyPath: m_Name
