@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class TileMapGenerator : MonoBehaviour
 {
+    public static TileMapGenerator instance;
 
     public MapTile mapTilePrefab;
     public int mapTileSize = 1;
@@ -14,9 +15,14 @@ public class TileMapGenerator : MonoBehaviour
 
     private MapTile[,] mapTiles;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
-        InteractionManager.instance.onTileSelect += DeleteTileTest;
+        //InteractionManager.instance.onTileSelect += DeleteTileTest;
 
         GenerateTileMap(32, 32);
     }
