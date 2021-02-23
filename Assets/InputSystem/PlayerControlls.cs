@@ -25,6 +25,22 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""TileSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""e01d91f8-0863-4541-9b6a-754728781507"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""30a83e65-5bf7-4ad6-a928-afd51654f24b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -137,6 +153,28 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26a92a3b-6cb7-4e4b-a163-28f4f6e0a30d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TileSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b59196d-3efa-457b-b631-577041eaee55"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -146,6 +184,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         // KeyboardMouse
         m_KeyboardMouse = asset.FindActionMap("KeyboardMouse", throwIfNotFound: true);
         m_KeyboardMouse_Move = m_KeyboardMouse.FindAction("Move", throwIfNotFound: true);
+        m_KeyboardMouse_TileSelect = m_KeyboardMouse.FindAction("TileSelect", throwIfNotFound: true);
+        m_KeyboardMouse_MousePosition = m_KeyboardMouse.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,11 +236,15 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_KeyboardMouse;
     private IKeyboardMouseActions m_KeyboardMouseActionsCallbackInterface;
     private readonly InputAction m_KeyboardMouse_Move;
+    private readonly InputAction m_KeyboardMouse_TileSelect;
+    private readonly InputAction m_KeyboardMouse_MousePosition;
     public struct KeyboardMouseActions
     {
         private @PlayerControlls m_Wrapper;
         public KeyboardMouseActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_KeyboardMouse_Move;
+        public InputAction @TileSelect => m_Wrapper.m_KeyboardMouse_TileSelect;
+        public InputAction @MousePosition => m_Wrapper.m_KeyboardMouse_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -213,6 +257,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMove;
+                @TileSelect.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnTileSelect;
+                @TileSelect.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnTileSelect;
+                @TileSelect.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnTileSelect;
+                @MousePosition.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_KeyboardMouseActionsCallbackInterface = instance;
             if (instance != null)
@@ -220,6 +270,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @TileSelect.started += instance.OnTileSelect;
+                @TileSelect.performed += instance.OnTileSelect;
+                @TileSelect.canceled += instance.OnTileSelect;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -227,5 +283,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     public interface IKeyboardMouseActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnTileSelect(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
