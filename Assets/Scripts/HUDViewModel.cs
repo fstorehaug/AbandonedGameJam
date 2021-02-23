@@ -21,12 +21,13 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
 		
         if (pointsEarnedOnThisIsland == 0)
         {
-            //endGame;
+            GameManager.GameOver(ResourceManager.instance.RunningPoints);
         }
 
         ResourceManager.instance.CarryOverReasourses();
 		TileMapGenerator.instance.DeleteAllTiles();
 		BuildingManager.DeleteAllBuildings();
+        GameManager.AbandondIslands++;
 
 		//TODO: do some transition stuff here
 
