@@ -8,14 +8,13 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    private ResourceManager resourceManager;
 
     [Binding]
     public int resourceCountPeople
     {
         get
         {
-            return resourceManager.CurrentResources["people"];
+            return GameManager.player.reasourceManager.CurrentResources["people"];
         }
     }
 
@@ -24,7 +23,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return resourceManager.CurrentResources["boats"];
+            return GameManager.player.reasourceManager.CurrentResources["boats"];
         }
     }
 
@@ -33,7 +32,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return resourceManager.CurrentResources["wood"];
+            return GameManager.player.reasourceManager.CurrentResources["wood"];
         }
     }
 
@@ -42,7 +41,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return resourceManager.CurrentResources["food"];
+            return GameManager.player.reasourceManager.CurrentResources["food"];
         }
     }
 
@@ -51,7 +50,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return resourceManager.CurrentResources["stone"];
+            return GameManager.player.reasourceManager.CurrentResources["stone"];
         }
     }
 
@@ -60,18 +59,8 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return resourceManager.CurrentResources["iron"];
+            return GameManager.player.reasourceManager.CurrentResources["iron"];
         }
-    }
-
-    public void SetResourceManager(ResourceManager manager)
-    {
-        this.resourceManager = manager;
-    }
-
-    private void Awake()
-    {
-        SetResourceManager(GameManager.player.reasourceManager);
     }
 
     private void Update()
