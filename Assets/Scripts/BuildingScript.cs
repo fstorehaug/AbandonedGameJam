@@ -46,7 +46,7 @@ public class BuildingScript : MonoBehaviour
         {
             productionTime = 0;
             isProducing = false;
-            owner.reasourceManager.AddResource(productionresname, productionValue);
+            owner.reasourceManager.AddResource(productionresname, tile.extractResource(productionresname, productionValue));
             return;
         }
 
