@@ -22,6 +22,11 @@ public class ResourceManager
         }
     }
 
+    public void AddResource(string type, int value)
+    {
+        CurrentResources[type] += value;
+    }
+
     public void SpendResource(string type, int value)
     {
         if (CurrentResources[type] >= value)

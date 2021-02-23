@@ -9,9 +9,9 @@ public class BuildingManager : MonoBehaviour
     public static List<GameObject> buildings = new List<GameObject>();
     public static Vector3 buildingOffsetVector;
 
-    public static bool CanBuild(Player player, BuildingData building, Tile tile)
+    public static bool CanBuild(Player player, BuildingData building, MapTile tile)
     {
-        if (building.needwater && !tile.haswater)
+        if (building.needwater && !tile.isCoast)
         {
             return false;
         }
@@ -40,7 +40,7 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
-    public static void Build(Player player, BuildingData buidling, Tile tile)
+    public static void Build(Player player, BuildingData buidling, MapTile tile)
     {
         foreach (string resourcename in buidling.cost.Keys)
         {
@@ -55,13 +55,4 @@ public class BuildingManager : MonoBehaviour
         buildingScript.setupBuilding(buidling, player);
     }
 
-}
-
-
-
-
-public class Tile : MonoBehaviour
-{
-    public bool isOccupied;
-    public bool haswater;
 }
