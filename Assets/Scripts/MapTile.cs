@@ -6,7 +6,6 @@ public class MapTile : MonoBehaviour
 {
     public bool isOccupied;
     public bool isCoast;
-
     private Dictionary<string, int> availableresources = new Dictionary<string, int>();
 
     public int extractResource(string resourceName, int value)
@@ -35,7 +34,7 @@ public class MapTile : MonoBehaviour
     public void addAvailableResource(string resourceName, int count)
     {
         if(!availableresources.ContainsKey(resourceName))
-            availableresources.Add(resourceName, 0);
+            availableresources.Add(resourceName, count);
         else
             availableresources[resourceName] += count;
     }

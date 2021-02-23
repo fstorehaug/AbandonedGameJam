@@ -14,7 +14,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["people"];
+            return GameManager.player == null? 0 : GameManager.player.reasourceManager.CurrentResources["people"];
         }
     }
 
@@ -23,7 +23,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["boats"];
+            return GameManager.player == null ? 0 : GameManager.player.reasourceManager.CurrentResources["boats"];
         }
     }
 
@@ -32,7 +32,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["wood"];
+            return GameManager.player == null ? 0 : GameManager.player.reasourceManager.CurrentResources["wood"];
         }
     }
 
@@ -41,7 +41,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["food"];
+            return GameManager.player == null ? 0 : GameManager.player.reasourceManager.CurrentResources["food"];
         }
     }
 
@@ -50,7 +50,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["stone"];
+            return GameManager.player == null ? 0 :GameManager.player.reasourceManager.CurrentResources["stone"];
         }
     }
 
@@ -59,7 +59,7 @@ public class PlayerResourceViewModel: MonoBehaviour, INotifyPropertyChanged
     {
         get
         {
-            return GameManager.player.reasourceManager.CurrentResources["iron"];
+            return GameManager.player == null ? 0 : GameManager.player.reasourceManager.CurrentResources["iron"];
         }
     }
 

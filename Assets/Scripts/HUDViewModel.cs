@@ -32,7 +32,7 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
 		//TODO: do some transition stuff here
 
 		//create the next island!
-		TileMapGenerator.instance.GenerateTileMap(Random.Range(16, 48), Random.Range(16, 48));
+		TileMapGenerator.instance.GenerateTileMap(Mathf.Clamp( Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10), Mathf.Clamp( Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10));
 	}
 
 	private void OnPropertyChanged(string propertyName)

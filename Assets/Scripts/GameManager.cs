@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    private void Start()
+    private void Awake()
     {
         player = new Player(settings.name);
         AbandondIslands = 0;

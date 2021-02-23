@@ -18,7 +18,7 @@ public class TileMapGenerator : MonoBehaviour
 
     private MapTile[,] mapTiles;
 
-    private Dictionary<string, int> resourcesToAssign = new Dictionary<string, int>() {{"wood", 1000}, {"food", 1000}, {"stone", 1000}, {"iron", 1000}};
+    private Dictionary<string, int> resourcesToAssign = new Dictionary<string, int>() {{"wood", 2000}, {"food", 2000}, {"stone", 1000}, {"iron", 1000}};
 
     void Awake()
     {
@@ -29,7 +29,7 @@ public class TileMapGenerator : MonoBehaviour
     {
         //InteractionManager.instance.onTileSelect += DeleteTileTest;
 
-        GenerateTileMap(32, 32);
+        GenerateTileMap(10, 10);
     }
 
     void Update()
@@ -72,7 +72,7 @@ public class TileMapGenerator : MonoBehaviour
             shuffledTileList = shuffledTileList.OrderBy (x => rand.Next()).ToList();
 
             int tilesWithResources = shuffledTileList.Count / 2;
-            int resourcesPerTile = resourcePair.Value / tilesWithResources;
+            int resourcesPerTile = resourcePair.Value / tilesWithResources * (GameManager.AbandondIslands +1);
 
             for(int iTile = 0; iTile < tilesWithResources; iTile++)
             {
@@ -80,7 +80,7 @@ public class TileMapGenerator : MonoBehaviour
             }
         }
     }
-    
+
     public MapTile GetTile(int x, int y)
     {
         if(x >= 0 && x < dimX && y >= 0 && y < dimY)
