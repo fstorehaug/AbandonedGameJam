@@ -12,10 +12,16 @@ public class CameraController : MonoBehaviour
 	public float cameraZoomSpeed;
 	
 	private float zoomLerpFactor;
+	public PlayerControlls playerControlls;
+	private Vector2 movementVector;
 
 	private void Start()
 	{
 		zoomLerpFactor = Mathf.InverseLerp(cameraMinHeight, cameraMaxHeight, cameraBaseHeight);
+		playerControlls = new PlayerControlls();
+		playerControlls.Enable();
+
+		playerControlls.KeyboardMouse.Move.performed += context => movementVector = context.ReadValue<Vector2>();
 	}
 
 	void Update()
@@ -31,6 +37,8 @@ public class CameraController : MonoBehaviour
 		else if (mousePosition.x > Screen.width - screenEdgeScrollBorderPx)
 			xDelta = Mathf.Lerp(0f, cameraScrollSpeed, (float)(mousePosition.x - (Screen.width - screenEdgeScrollBorderPx)) / screenEdgeScrollBorderPx);
 
+		if (movementVector.x != 0)
+			xDelta += cameraScrollSpeed * movementVector.x;
 		xDelta *= Time.deltaTime;
 
 		float yDelta = 0f;
@@ -38,6 +46,9 @@ public class CameraController : MonoBehaviour
 			yDelta = -Mathf.Lerp(cameraScrollSpeed, 0f, Mathf.Clamp01((float)mousePosition.y / screenEdgeScrollBorderPx));
 		else if (mousePosition.y > Screen.height - screenEdgeScrollBorderPx)
 			yDelta = Mathf.Lerp(0f, cameraScrollSpeed, Mathf.Clamp01((float)(mousePosition.y - (Screen.height - screenEdgeScrollBorderPx)) / screenEdgeScrollBorderPx));
+
+		if (movementVector.y != 0)
+			yDelta += cameraScrollSpeed * movementVector.y;
 
 		yDelta *= Time.deltaTime;
 
