@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 public class BuildingManager : MonoBehaviour
 {
 
-    public static bool canBuildWater(Player player, Building building, Tile tile)
+    public static List<GameObject> buildings = new List<GameObject>();
+    public static Vector3 buildingOffsetVector;
+
+
+    public static bool canBuildWater(Player player, BuildingData building, Tile tile)
     {
         if (tile.neighbors.Count < 8)
         {
@@ -16,7 +20,7 @@ public class BuildingManager : MonoBehaviour
         return canBuildLand(player, building, tile);
     }
 
-    public static bool canBuildLand(Player player, Building building, Tile tile)
+    public static bool canBuildLand(Player player, BuildingData building, Tile tile)
     {
         if (tile.isOccupied)
             return false;
@@ -29,7 +33,7 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
    
-    public static bool canAfford(resourceManager resourceManager, Building building)
+    public static bool canAfford(ResourceManager resourceManager, BuildingData building)
     {
         foreach (string reasourcename in building.cost.Keys)
         {
@@ -42,45 +46,43 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
-    public static void Build(Player player, Building buidling, Tile tile)
+    public static void Build(Player player, BuildingData buidling, Tile tile)
     {
         foreach (string resourcename in buidling.cost.Keys)
         {
             player.reasourceManager.SpendResource(resourcename, buidling.cost[resourcename]);
         }
 
-        buidling.build(tile);
+        GameObject buildingmodel = Instantiate(buidling.model);
+        buildingmodel.transform.parent = tile.transform;
+        buildingmodel.transform.localPosition = buildingOffsetVector;
+        Building buildingScript  = buildingmodel.AddComponent<Building>();
+
+        buildingScript.setupBuilding(buidling, player);
     }
 
 }
 
 
 
-public class Building
+public class BuildingData
 {
-    public Player owner;
     public Dictionary<string, int> cost;
     public GameObject model;
     public int production;
     public string resourceType;
+}
 
-    public PlayerControlls plauercontroll = new PlayerControlls();
-
-    public void build(Tile tile)
+public class Building : MonoBehaviour
+{
+    public void setupBuilding(BuildingData data, Player player)
     {
-        //instatnitate an instance of the correct building on the map
+
     }
 
-
-
 }
 
-public class BuildingInstance : MonoBehaviour
-{
-
-}
-
-public class resourceManager
+public class ResourceManager
 {
     public Dictionary<string, int> CurrentResources;
     public static readonly string[] resourses =
@@ -91,7 +93,7 @@ public class resourceManager
         "iron"
     };
 
-    public resourceManager()
+    public ResourceManager()
     {
         CurrentResources = new Dictionary<string, int>();
         foreach (string resourcename in resourses)
@@ -115,11 +117,11 @@ public class Player
     public Color color;
     public string name;
 
-    public readonly resourceManager reasourceManager;
+    public readonly ResourceManager reasourceManager;
 
     public Player(string name)
     {
-        reasourceManager = new resourceManager();
+        reasourceManager = new ResourceManager();
         color = new Color(Random.Range(0, 264), Random.Range(0, 264), Random.Range(0, 264));
         this.name = name;
     }
