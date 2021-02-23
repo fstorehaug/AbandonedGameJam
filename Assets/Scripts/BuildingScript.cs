@@ -19,12 +19,15 @@ public class BuildingScript : MonoBehaviour
     public int requiredWorkers;
     public int assignedWorkers;
 
+    public bool isDepleted;
+
     Player owner;
     MapTile tile;
     public void setupBuilding(BuildingData data, Player player, MapTile tile)
     {
         owner = player;
         isProducing = false;
+        isDepleted = false;
         assignedWorkers = 0;
 
         this.productionresname = data.productionResourseType;
@@ -41,6 +44,7 @@ public class BuildingScript : MonoBehaviour
 
     public void ProduceResources() 
     {
+
         if (productionTime >= productionDelay)
         {
             if (productionresname == "people" || productionresname == "boats")
@@ -53,7 +57,12 @@ public class BuildingScript : MonoBehaviour
 
             productionTime = 0;
             isProducing = false;
-            owner.reasourceManager.AddResource(productionresname, tile.extractResource(productionresname, productionValue));
+            int extractedvalue = tile.extractResource(productionresname, productionValue);
+            if(extractedvalue < productionValue)
+            {
+                TimeManager.onTick -= ProduceResources;
+            }
+            owner.reasourceManager.AddResource(productionresname, extractedvalue);
             return;
         }
 
