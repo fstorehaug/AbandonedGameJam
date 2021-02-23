@@ -16,11 +16,21 @@ public class BuildingScript : MonoBehaviour
 
     public bool isProducing;
 
+    public int requiredWorkers;
+    public int assignedWorkers;
+
     Player owner;
     public void setupBuilding(BuildingData data, Player player)
     {
         owner = player;
         isProducing = false;
+
+        this.productionresname = data.productionResourseType;
+        this.consumtionresname = data.consumtionResourseType;
+        this.productionValue = data.productionValue;
+        this.consumtionValue = data.consumtionValue;
+
+        this.productionDelay = data.productionDelay;
     }
 
     public void ProduceResources() 
@@ -35,7 +45,10 @@ public class BuildingScript : MonoBehaviour
 
         if (isProducing)
         {
-            productionTime++;
+            if (assignedWorkers == requiredWorkers)
+            {
+                productionTime++;
+            }
         }
         else
         {

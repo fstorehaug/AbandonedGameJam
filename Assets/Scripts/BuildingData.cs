@@ -7,8 +7,15 @@ public class BuildingData
 {
     public Dictionary<string, int> cost;
     public GameObject model;
-    public int production;
-    public string resourceType;
+    
+    public string consumtionResourseType;
+    public string productionResourseType;
+    public int consumtionValue;
+    public int productionValue;
+
+    public int productionDelay;
+    public int workerCost;
+
     public bool needwater;
 }
 
