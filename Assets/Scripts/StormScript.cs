@@ -26,7 +26,7 @@ public class StormScript : MonoBehaviour, INotifyPropertyChanged
 
     private int CalculateTotalTime() 
     {
-        return (int)baseTimeToStorm * (1 / GameManager.AbandondIslands + 1);
+        return (int)baseTimeToStorm * (1 /( GameManager.AbandondIslands + 1));
     }
 
     public void onTick() 
