@@ -15,7 +15,7 @@ public class HUDViewModel: MonoBehaviour, INotifyPropertyChanged
     }
 
 	[Binding]
-	public static void AbandonIsland()
+	public void AbandonIsland()
 	{
         GameManager.AbandondIsland();
     }
