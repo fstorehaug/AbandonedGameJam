@@ -20,10 +20,12 @@ public class BuildingScript : MonoBehaviour
     public int assignedWorkers;
 
     Player owner;
-    public void setupBuilding(BuildingData data, Player player)
+    MapTile tile;
+    public void setupBuilding(BuildingData data, Player player, MapTile tile)
     {
         owner = player;
         isProducing = false;
+        assignedWorkers = 0;
 
         this.productionresname = data.productionResourseType;
         this.consumtionresname = data.consumtionResourseType;
@@ -31,10 +33,15 @@ public class BuildingScript : MonoBehaviour
         this.consumtionValue = data.consumtionValue;
 
         this.productionDelay = data.productionDelay;
+        this.requiredWorkers = data.workerCost;
+
+        this.tile = tile;
     }
 
     public void ProduceResources() 
     {
+        
+
         if (productionTime <= productionDelay)
         {
             productionTime = 0;
@@ -58,6 +65,16 @@ public class BuildingScript : MonoBehaviour
                 isProducing = true;
             }
         }
+    }
+
+    public void addWorker()
+    {
+        assignedWorkers++;
+    }
+
+    public void removeWorker()
+    {
+        assignedWorkers--;
     }
 
     private void OnDestroy()

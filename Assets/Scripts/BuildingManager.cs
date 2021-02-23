@@ -52,7 +52,7 @@ public class BuildingManager : MonoBehaviour
         buildingmodel.transform.localPosition = buildingOffsetVector;
         BuildingScript buildingScript  = buildingmodel.AddComponent<BuildingScript>();
 
-        buildingScript.setupBuilding(buidling, player);
+        buildingScript.setupBuilding(buidling, player, tile);
     }
 
 }
