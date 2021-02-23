@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &582079899225041697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582079899225041699}
+  - component: {fileID: 582079899225041696}
+  m_Layer: 0
+  m_Name: BuildingDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &582079899225041699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582079899225041697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.723966, y: 9.441622, z: -16.617584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582079899225041696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582079899225041697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a3c02a544a7198e803eecd8dcba794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings:
+  - buildingName: Nursery
+    cost: []
+    model: {fileID: 1385343169751839987, guid: 92bab7eee8b1e4931980474139e0deb7, type: 3}
+    consumtionResourseType: food
+    productionResourseType: people
+    consumtionValue: 5
+    productionValue: 1
+    productionDelay: 60
+    workerCost: 2
+    needwater: 0
+  - buildingName: LumberCamp
+    cost: []
+    model: {fileID: 1385343169751839987, guid: 92bab7eee8b1e4931980474139e0deb7, type: 3}
+    consumtionResourseType: food
+    productionResourseType: wood
+    consumtionValue: 1
+    productionValue: 10
+    productionDelay: 60
+    workerCost: 3
+    needwater: 0
+  - buildingName: HuntingCamp
+    cost: []
+    model: {fileID: 1385343169751839987, guid: 92bab7eee8b1e4931980474139e0deb7, type: 3}
+    consumtionResourseType: wood
+    productionResourseType: food
+    consumtionValue: 1
+    productionValue: 10
+    productionDelay: 60
+    workerCost: 2
+    needwater: 0
+  - buildingName: Shipyard
+    cost: []
+    model: {fileID: 1385343169751839987, guid: 92bab7eee8b1e4931980474139e0deb7, type: 3}
+    consumtionResourseType: lumber
+    productionResourseType: boats
+    consumtionValue: 10
+    productionValue: 1
+    productionDelay: 120
+    workerCost: 5
+    needwater: 1
