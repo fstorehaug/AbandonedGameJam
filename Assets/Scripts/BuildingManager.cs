@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
-
-    public static List<GameObject> buildings = new List<GameObject>();
+	public static List<GameObject> buildings = new List<GameObject>();
     public static Vector3 buildingOffsetVector;
 
     public static bool CanBuild(Player player, BuildingData building, MapTile tile)
@@ -53,6 +52,15 @@ public class BuildingManager : MonoBehaviour
         BuildingScript buildingScript  = buildingmodel.AddComponent<BuildingScript>();
 
         buildingScript.setupBuilding(buidling, player, tile);
-    }
+		buildings.Add(buildingmodel);
+	}
+
+	public static void DeleteAllBuildings()
+	{
+		foreach (var building in buildings)
+			GameObject.Destroy(building);
+
+		buildings.Clear();
+	}
 
 }

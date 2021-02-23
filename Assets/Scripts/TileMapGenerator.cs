@@ -77,4 +77,11 @@ public class TileMapGenerator : MonoBehaviour
             GameObject.Destroy(tile.gameObject);
         }
     }
+
+	public void DeleteAllTiles()
+	{
+		for (int x = 0; x < dimX; ++x)
+			for (int y = 0; y < dimY; ++y)
+				DeleteTileTest(x, y);
+	}
 }
