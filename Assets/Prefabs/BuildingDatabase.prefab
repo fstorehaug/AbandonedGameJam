@@ -53,7 +53,7 @@ MonoBehaviour:
     productionResourseType: people
     consumtionValue: 5
     productionValue: 1
-    productionDelay: 60
+    productionDelay: 5
     workerCost: 2
     needwater: 0
   - buildingName: LumberCamp
@@ -65,7 +65,7 @@ MonoBehaviour:
     productionResourseType: wood
     consumtionValue: 1
     productionValue: 10
-    productionDelay: 60
+    productionDelay: 5
     workerCost: 3
     needwater: 0
   - buildingName: HuntingCamp
@@ -77,7 +77,7 @@ MonoBehaviour:
     productionResourseType: food
     consumtionValue: 1
     productionValue: 10
-    productionDelay: 60
+    productionDelay: 5
     workerCost: 2
     needwater: 0
   - buildingName: Shipyard
@@ -89,6 +89,6 @@ MonoBehaviour:
     productionResourseType: boats
     consumtionValue: 10
     productionValue: 1
-    productionDelay: 120
+    productionDelay: 20
     workerCost: 5
     needwater: 1

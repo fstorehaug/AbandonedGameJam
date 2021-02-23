@@ -41,8 +41,16 @@ public class BuildingScript : MonoBehaviour
 
     public void ProduceResources() 
     {
-        if (productionTime <= productionDelay)
+        if (productionTime >= productionDelay)
         {
+            if (productionresname == "people")
+            {
+                productionTime = 0;
+                isProducing = false;
+                owner.reasourceManager.AddResource(productionresname, productionValue);
+                return;
+            }
+
             productionTime = 0;
             isProducing = false;
             owner.reasourceManager.AddResource(productionresname, tile.extractResource(productionresname, productionValue));
@@ -51,7 +59,7 @@ public class BuildingScript : MonoBehaviour
 
         if (isProducing)
         {
-            if (assignedWorkers == requiredWorkers)
+            if (true /*TODO: assignedWorkers == requiredWorkers*/)
             {
                 productionTime++;
             }

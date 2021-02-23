@@ -27,6 +27,32 @@ public class GameManager : MonoBehaviour
         addStartingResources(player);
     }
 
+    public static void AbandondIsland()
+    {
+        if (GameManager.player.reasourceManager.CurrentResources["boats"] == 0)
+        {
+            GameManager.GameOver(ResourceManager.instance.RunningPoints);
+        }
+        
+        int pointsEarnedOnThisIsland = ResourceManager.instance.DoAbandonmentPointCalculation(); //TODO: display points earned on this island during transition
+
+        if (pointsEarnedOnThisIsland == 0)
+        {
+            GameManager.GameOver(ResourceManager.instance.RunningPoints);
+        }
+
+        ResourceManager.instance.CarryOverReasourses();
+        TileMapGenerator.instance.DeleteAllTiles();
+        BuildingManager.DeleteAllBuildings();
+        GameManager.AbandondIslands++;
+
+        //TODO: do some transition stuff here
+
+        //create the next island!
+        TileMapGenerator.instance.GenerateTileMap(Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10), Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10));
+
+    }
+
     private void addStartingResources(Player player)
     {
         player.reasourceManager.AddResource("people", 7);
