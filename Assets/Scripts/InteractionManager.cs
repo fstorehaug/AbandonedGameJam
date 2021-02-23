@@ -30,6 +30,13 @@ public class InteractionManager : MonoBehaviour
         playerControlls.KeyboardMouse.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
     }
 
+    private void OnDestroy()
+    {
+        playerControlls.KeyboardMouse.TileSelect.performed -= OnTileSelectPerformed;
+        playerControlls.KeyboardMouse.MousePosition.performed -= context => mousePosition = context.ReadValue<Vector2>();
+        playerControlls.Disable();
+    }
+
     private void Update()
     {
         Vector3 hitPosLocal = GetTileCoordinateAtMouse();

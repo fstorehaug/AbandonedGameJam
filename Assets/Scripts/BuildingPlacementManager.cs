@@ -34,6 +34,12 @@ public class BuildingPlacementManager : MonoBehaviour
         InteractionManager.instance.onTileSelect += OnTileSelect;
     }
 
+    private void OnDestroy()
+    {
+        InteractionManager.instance.onTileHover -= OnTileHover;
+        InteractionManager.instance.onTileSelect -= OnTileSelect;
+    }
+
     private void OnTileHover(int x, int y)
     {
         if(isPlacing)
