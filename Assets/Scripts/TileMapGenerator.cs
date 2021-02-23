@@ -56,7 +56,7 @@ public class TileMapGenerator : MonoBehaviour
                     tile = GameObject.Instantiate(mapTilePrefab);
 
                 tile.transform.parent = this.transform;
-                tile.transform.localPosition = new Vector3(x * mapTileSize, 0.05f, y * mapTileSize) + new Vector3(mapTileSize/2, -mapTileSize/2, mapTileSize/2);
+                tile.transform.localPosition = new Vector3(x * mapTileSize, 0f, y * mapTileSize) + new Vector3(mapTileSize/2, -mapTileSize/2, mapTileSize/2);
                 tile.transform.localScale = Vector3.one;
                 tile.transform.localRotation = Quaternion.identity;
                 //tile.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color((x / 10.0f) % 1.0f, (y / 10.0f) % 1.0f , x*y));
