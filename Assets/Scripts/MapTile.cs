@@ -31,4 +31,12 @@ public class MapTile : MonoBehaviour
         else
             return 0;
     }
+
+    public void addAvailableResource(string resourceName, int count)
+    {
+        if(!availableresources.ContainsKey(resourceName))
+            availableresources.Add(resourceName, 0);
+        else
+            availableresources[resourceName] += count;
+    }
 }
