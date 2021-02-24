@@ -1,4 +1,4 @@
-# Game jam project: "Abandoned"
+# Abandoned Islands
 A gamejam project done at work.
 
 <img src="Screenshots/mainmenu.png" width="600px">
