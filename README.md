@@ -1,4 +1,4 @@
-# UnityVolumeRendering
+# Game jam project: "Abandoned"
 A gamejam project done at work.
 
 <img src="Screenshots/mainmenu.png" width="600px">
