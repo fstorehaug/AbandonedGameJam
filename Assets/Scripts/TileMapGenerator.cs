@@ -72,7 +72,7 @@ public class TileMapGenerator : MonoBehaviour
             shuffledTileList = shuffledTileList.OrderBy (x => rand.Next()).ToList();
 
             int tilesWithResources = shuffledTileList.Count / 2;
-            int resourcesPerTile = resourcePair.Value / tilesWithResources * (GameManager.AbandondIslands +1);
+            int resourcesPerTile = resourcePair.Value / (tilesWithResources * (GameManager.AbandondIslands +1));
 
             for(int iTile = 0; iTile < tilesWithResources; iTile++)
             {
