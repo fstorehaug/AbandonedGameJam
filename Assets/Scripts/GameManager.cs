@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         //TODO: do some transition stuff here
 
         //create the next island!
-        TileMapGenerator.instance.GenerateTileMap(Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10), Mathf.Clamp(Random.Range(7, 12) - GameManager.AbandondIslands, 3, 10));
+        TileMapGenerator.instance.GenerateTileMap(Mathf.Clamp(Random.Range(4, 6) - GameManager.AbandondIslands, 2, 5));
     }
 
     private void addStartingResources(Player player)

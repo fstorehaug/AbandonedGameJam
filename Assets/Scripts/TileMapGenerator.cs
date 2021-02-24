@@ -29,28 +29,40 @@ public class TileMapGenerator : MonoBehaviour
     {
         //InteractionManager.instance.onTileSelect += DeleteTileTest;
 
-        GenerateTileMap(10, 10);
+        GenerateTileMap(6);
     }
 
     void Update()
     {
     }
 
-    public void GenerateTileMap(int dimX, int dimY)
+    public void GenerateTileMap(int radius)
     {
-        this.dimX = dimX;
-        this.dimY = dimY;
+        int dimension = radius * 2 + 2;
+
+        this.dimX = dimension;
+        this.dimY = dimension;
 
         mapTiles = new MapTile[dimY, dimX];
 
         List<MapTile> shuffledTileList = new List<MapTile>();
 
+        int cX = dimY / 2;
+        int cY = dimX / 2;
+
         for(int y = 0; y < dimY; y++)
         {
             for(int x = 0; x < dimX; x++)
             {
+                int dX = x - cX;
+                int dY = y - cY;
+                int d = Mathf.Abs(dX) + Mathf.Abs(dY);
+
+                if (d > radius)
+                    continue;
+
                 MapTile tile;
-                if(x == 0 || x == dimX - 1 || y == 0 || y == dimY - 1)
+                if(d == radius)
                     tile = GameObject.Instantiate(mapTileSlopedPrefab);
                 else
                     tile = GameObject.Instantiate(mapTilePrefab);
