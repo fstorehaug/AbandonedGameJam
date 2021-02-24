@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  isCoast: 1
+  isCoast: 0
 --- !u!1001 &1216238511434616122
 PrefabInstance:
   m_ObjectHideFlags: 0
