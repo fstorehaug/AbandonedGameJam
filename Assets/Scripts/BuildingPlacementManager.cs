@@ -12,6 +12,9 @@ public class BuildingPlacementManager : MonoBehaviour
     {
         this.buildingData = buildingData;
 
+        if (buildingGhost != null)
+            Destroy(buildingGhost);
+
         buildingGhost = GameObject.Instantiate(buildingData.model);
 
         isPlacing = true;
