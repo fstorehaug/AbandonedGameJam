@@ -56,6 +56,6 @@ public class InteractionManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         float d = (tileMap.transform.position.y - ray.origin.y) / ray.direction.y;
         Vector3 hitPosWorld = ray.origin + ray.direction * d;
-        return tileMap.transform.InverseTransformPoint(hitPosWorld);
+        return tileMap.transform.InverseTransformPoint(hitPosWorld) + Vector3.one * 0.5f;
     }
 }
