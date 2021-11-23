@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuildingPlacementManager : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class BuildingPlacementManager : MonoBehaviour
     private BuildingData buildingData;
     private GameObject buildingGhost;
     private bool isPlacing = false;
+
+    public UnityAction<bool> onPlacementStateChanged;
 
     public void StartPlacement(BuildingData buildingData)
     {
@@ -18,12 +22,24 @@ public class BuildingPlacementManager : MonoBehaviour
         buildingGhost = GameObject.Instantiate(buildingData.model);
 
         isPlacing = true;
+        onPlacementStateChanged?.Invoke(true);
     }
 
     public void EndPlacement()
     {
         isPlacing = false;
         Destroy(buildingGhost);
+        onPlacementStateChanged?.Invoke(false);
+    }
+
+    public bool IsPlacing()
+    {
+        return isPlacing;
+    }
+
+    public BuildingData GetBuildingData()
+    {
+        return buildingData;
     }
 
     private void Awake()

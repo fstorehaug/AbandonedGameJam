@@ -8,10 +8,12 @@ public class BuildingListItemViewModel : INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     private BuildingData buildingData;
+    private BuildingListViewModel buildingListVM;
 
-    public BuildingListItemViewModel(BuildingData building)
+    public BuildingListItemViewModel(BuildingData building, BuildingListViewModel listVM)
     {
         buildingData = building;
+        buildingListVM = listVM;
 
         TimeManager.onTick += OnTick;
     }
@@ -45,6 +47,18 @@ public class BuildingListItemViewModel : INotifyPropertyChanged
         {
             Debug.LogError("Not enough resources!");
         }
+    }
+
+    [Binding]
+    public void HoverBuilding()
+    {
+        buildingListVM.StartHoverBuilding(buildingData);
+    }
+
+    [Binding]
+    public void UnHoverBuilding()
+    {
+        buildingListVM.EndHoverBuilding(buildingData);
     }
 
     private void OnTick()
